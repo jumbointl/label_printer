@@ -1,0 +1,627 @@
+
+import 'package:flutter/src/widgets/framework.dart';
+
+import 'memory_sol.dart';
+
+class Messages{
+    static String APP_NAME ='SOL DELIVERY 01';
+    static String FACEBOOK ='FACEBOOK';
+    static String GOOGLE ='GOOGLE';
+    static String ID ='ID';
+    static String IMAGE ='IMAGE';
+    static String TIME_OUT ='TIME OUT';
+    static String STORE ='SUCURSAL';
+    static String STATUS ='STATUS';
+    static String ACTIVE ='ACTIVO';
+    static String IS_ACTIVE ='ES ACTIVO?';
+    static String NAME ='NOMBRE';
+    static String LAST_NAME ='APELLIDO';
+    static String PHONE ='TELEFONO';
+    static String HOME ='HOME';
+    static String PROFIT ='PERFIL';
+    static String MY_ORDERS ='MIS PEDIDOS';
+    static String MY_ORDER ='MI PEDIDO';
+    static String PASSWORD ='CONTRASEÑA';
+    static String RETYPE_PASSWORD ='CONFIRMAR CONTRASEÑA';
+    static String EMAIL ='EMAIL';
+    static String LOGIN='LOGIN';
+    static String LOGOUT='SALIR';
+    static String FORGOT_THE_PASSWORD='OLVIDASTE CONTRASEÑA?';
+    static String DONT_HAVE_ACCOUNT='NO TIENES CUENTA?';
+    static String ALREADY_HAVE_ACCOUNT='YA TIENES UNA CUENTA?';
+    static String REGISTER_HERE='REGISTRATE AQUI';
+    static String TEXT_YOUR_INFO='INGRESAR ESTA INFORMACION';
+    static String RESET_PASSWORD ='CAMBIAR CONTRASEÑA';
+    static String SUCCESS='EXITO';
+    static String ERROR='ERROR';
+    static String ERROR_HTTP='ERROR HTTP';
+    static String FIELD_ERROR='ERROR CAMPO';
+    static String ERROR_PASSWORD='ERROR PASSWORD O NO COINCIDE';
+    static String ERROR_IMAGE='ERROR IMAGEN';
+    static String ERROR_REGISTER='ERROR AL REGISTRAR';
+    static String ERROR_IN_UPDATE='ERROR AL ACTUALIZAR DATOS';
+    static String ERROR_UNAUTHORIZED='NO AUTORIZADO';
+    static String ERROR_DATABASE_QUERY='ERROR EN LA CONSULTA DE BASE DE DATOS';
+    static String REGISTER='REGISTRAR';
+    static String LOGIN_FAILED='LOGIN FALLIDO';
+    static String LOGIN_SUCCESS='LOGIN CON EXITO';
+    static String EMPTY='VACIO';
+    static String HOME_PAGE='PAGINA DE INICIO';
+    static String SELECT_AN_OPTION = 'SELECCIONAR UNA OPCION';
+    static String SELECT_A_CATEGORY = 'SELECCIONAR UNA CATEGORIA';
+    static String SELECT_A_STATUS = 'SELECCIONAR UN STATUS';
+    static String CAMARA = 'CAMARA';
+    static String GALERIA ='GALERIA';
+    static String CROPPER ='RECORTADOR DE IMAGEN';
+    static String UPDATE_DATAS ='ACTUALIZAR DATOS';
+    static String IN_REGISTRATION ='REGISTRANDO DATOS...';
+    static String IN_UPDATE ='ACTUALIZANDO DATOS...';
+    static String IMAGE_TOOL ='HERRAMIENTA DE IMAGEN';
+    static String ADMIN_ORDERS_LIST = 'LISTA DE ORDENES DEL ASMINISTRADOR';
+    static String SELLER_ORDERS_LIST = 'LISTA DE ORDENES DEL COMERCIO';
+    static String CLIENT_ORDERS_LIST = 'LISTA DE ORDENES DEL USUARIO';
+    static String DELIVERY_MAN_ORDERS_LIST = 'LISTA DE ORDENES DEL REPARTIDOR';
+    static String ORDER_PICKER_ORDERS_LIST = 'LISTA DE ORDENES DEL PREPARADOR DE PEDIDOS';
+    static String PLEASE_SET_CONTROLLER_CALL_SETCONTROLLER_FUNTION ='FAVOR DE CONFIGURAR GEXCONTROLLER USE setController()';
+
+    static String ERROR_IMAGE_ONLY_JPG_OR_PNG ='ERROR DE TIPO DE ARCHIVO, SOLO ADMITE jpg O png';
+    static String DELETE ='BORRAR';
+    static String SAVE ='GRABAR';
+    static String CROP ='CORTAR';
+    static String CATEGORIES ='CATEGORIAS';
+    static String PRODUCTS ='PRODUCTOS';
+    static String ORDERS ='ORDENES';
+    static String SOCIETY ='SOCIEDAD';
+    static String SOCIETIES ='SOCIEDADES';
+    static String PRICE ='PRECIO';
+    static String PRICES ='PRECIOS';
+    static String DESCRIPTION ='DESCRIPCION';
+
+  static String REMEMBER_ME ='RECORDAME';
+
+  static String OR_CONTINUE_WITH ='O CONTINUAR CON';
+
+  static String ERROR_NO_IMAGE_SELECTED = 'NO HAY NIGUN IMAGEN SELECCIONADO';
+  static String ERROR_PROCESSING_IMAGE = 'ERROR AL PROCESAR IMAGEN';
+  static String EXAMPLE_USER_NAME = 'Jose';
+  static String EXAMPLE_USER_EMAIL = 'test@example.com';
+
+  static String FUNTION_NOT_ENABLED_YED='FUNCION NO HABILIDATA';
+
+  static String NOT_ACTIVE ='NO ACTIVO';
+  static String DATA ='DATOS';
+  static String VAT ='I.V.A% (INCLUIDO = -, APARTE = +)';
+  static String SELECT_A_SOCIETY ='SELECCIONAR UNA SOCIEDAD';
+
+  static String WORK_FINISHED='TRABAJO TERMINADO';
+
+  static String SELECT_A_VAT ='SELECCIONAR TIPO IVA';
+
+  static String PRODUCTS_BY_GROUP='PRECIO P. POR GRUPO';
+
+  static String PRICE_LIST_SHORT='L. PRECIO';
+
+  static String VAT_CREATE='IVA NUEVA';
+  static String STATUS_CREATE='STATUS NUEVA';
+  static String CATEGORY_CREATE='CATEGORIA NUEVA';
+  static String GROUP_CREATE='GRUPO NUEVO';
+  static String PRODUCT_CREATE='PRODUCTO NUEVO';
+  static String PRICE_CREATE='PRECIO NUEVO';
+  static String SOCIETY_CREATE='SOCIEDAD NUEVA';
+  static String USER_CREATE='USUARIO NUEVO';
+  static String VAT_HANDLING='MANIPULAR IVA';
+  static String STATUS_HANDLING='MANIPULAR STATUS';
+  static String CATEGORY_HANDLING='MANIPULAR CATEGORIA';
+  static String GROUP_HANDLING='MANIPULAR GRUPO';
+  static String PRODUCT_HANDLING='MANIPULAR PRODUCTO';
+  static String PRICE_HANDLING='MANIPULAR PRECIO';
+  static String SOCIETY_HANDLING='MANIPULAR SOCIEDADES';
+  static String USER_HANDLING='MANIPULAR USUARIO';
+
+  static String DATABASE='BASE DE DATOS';
+
+  static String DATA_CREATE ='CREAR DATOS';
+
+  static String TIPS_FIND_BY_NAME ='BUSCAR POR NOMBRE, ejemplo %verd%';
+  static String TIPS_FIND_BY_PRODUCT ='BUSCAR POR PRODUCTO, ejemplo %verd%';
+  static String TIPS_FIND_BY_GROUP ='BUSCAR POR GRUPO, ejemplo %verd%';
+  static String TIPS_FIND_BY_CATEGORY ='BUSCAR POR CATEGORIA, ejemplo %verd%';
+  static String TIPS_FIND_BY_VAT ='BUSCAR POR I.V.A., ejemplo %verd%';
+  static String FIND_BY_NAME ='BUSCAR POR NOMBRE';
+
+  static String ID_NOT_FOUND='ID NO ENCONTRADO';
+
+  static String NO_DATA_FOUND ='0 REGISTRO ENCONTRADO';
+  static String REGISTERS ='REGISTROS';
+
+    static String SELECT_A_DATA_FROM_THE_FOLLOWING ='SELECCIONAR UN DATO DEL RESULTADO';
+    static String SELECT_A_DATA ='SELECCIONAR UN DATO';
+
+  static String CONDITION ='CONDICION';
+
+  static String CATEGORY ='CATEGORIA';
+  static String ERROR_DATA_RO_EDIT_IS_NULL='EL DATOS QUE DESEA EDITAR ES NULO';
+
+  static String SELECT_A_GROUP='SELECCIONAR UN GRUPO';
+
+  static String PRODUCT='PRODUCTO';
+  static String GROUP= 'GRUPO';
+  static String GROUPS= 'GRUPOS';
+
+  static String FIND_BY_GROUP_NAME ='BUSCAR POR NOMBRE DEL GRUPO';
+
+  static String NEW_DATA='NUEVO DATOS';
+
+  static String BARCODE='CODIGO DE BARRA';
+
+  static String IMAGE_EMPTY ='IMAGEN VACIO';
+
+  static String IMAGE_EMPTY_1_OR_2='IMAGEN VACIO 1 o 2';
+
+  static String USER ='USUARIO';
+
+  static String DATA_UPDATE ='EDITAR DATOS';
+
+  static String BACK ='VOLVER';
+
+  static String ADD ='AGREGAR';
+  static String ADD_TO_CART ='AGREGAR PARA COMPRAR';
+  static String ADDEDE ='AGREGADO';
+
+  static String ERROR_QUANTITY ='ERROR DE CANTIDAD';
+
+  static String QUANTITY ='CANTIDAD';
+  static String QUANTITY_GREATER_THAN_0 ='CANTIDAD > 0';
+  static String QUANTITY_EQUAL_TO ='CANTIDAD = 0';
+
+  static String PRODUCT_ADDED='PRODUCTO AGREGADO';
+  static String NO_PRODUCT_ADDED_YET='NO HAY NINGUN PRODUCTO AGEGADO AUN.';
+  static String CONFIRM_ORDER='CONFIRMAR PEDIDO';
+  static String CONFIRM='CONFIRMAR';
+
+  static String TOTAL_CN ='總計';
+  static String DATE_CN ='日期';
+  static String SUM_CN ='加總';
+  static String FINAL_CN ='最後';
+    static String CLIENT_CN ='客戶';
+
+
+
+  static String TOTAL ='TOTAL';
+
+  static String TOTAL_REFUND ='TOTAL DEVOLUCION';
+  static String TOTAL_ORDERS ='TOTAL PEDIDOS';
+  static String TOTAL_AMOUNT ='MONTO TOAL';
+  static String INDEX ='INDEX';
+  static String PU ='PU';
+  static String CONTINUE ='CONTINUAR';
+
+  static String BUY ='COMPRAR';
+  static String MY_ADDRESSES ='MIS DIRECCIONES';
+  static String MY_ADDRESS ='MI DIRECCION';
+  static String CREATE_ADDRESS ='CREAR DIRECCION';
+  static String ADDRESS ='DIRECCION';
+  static String CHOOSE_WHERE_TO_RECEIVE_YOUR_ORDER ='ELIJE DONDE RECIBIR TU PEDIDO';
+  static String NEIGHBORHOOD ='BARRIO';
+  static String POINT_OF_REFERENCE ='PUNTO DE REFERENCIA';
+  static String REF_POINT_OF_MAP ='REF EN MAPA';
+
+  static String SELECT_THIS_POINT ='SELECCIONAR ESTA UBICACION';
+  static String LOCATE_YOUR_ADDRESS_ON_THE_MAP ='UBICAR TU DIRECCION EN EL MAPA';
+  static String COMPLETE_THIS_FORM ='COMPLETAR ESTE FORMULARIO';
+  static String NEW_ADDRESS ='NUEVA DIRECCION';
+  static String DEFAULT_SELECTION ='PREDETERMINADA';
+  static String NOT_DEFAULT_SELECTION ='NO PREDETERMINADA';
+  static String CITY ='CIUDAD';
+  static String COUNTRY ='PAIS';
+  static String COORDINATE_LATUTE_LONGITUDE ='COORDENADA: LATUTUD, LONGITUD';
+  static String YOU_MUST_SELECT_AT_LEAST_ONE_ITEM_TO_ADD ='DEBES SELECCIONAR AL MENOS UNITEM PARA AGREGAR';
+  static String TAP_HERE_TO_SELECT_LOCATION_ON_THE_MAP ='TOCAR AQUI PARA SELECCIONAR UBICACION EN EL MAP';
+  static String OK ='OK';
+  static String PRODUCT_UPDATED ='PRODUCTO ACTUALIZADO';
+  static String DATA_UPDATED ='DATOS ACTUALIZADO';
+  static String VIEW_TRANSACTIONS ='VER TRANSACCIONES';
+
+  static String CREATE_ORDER='CREAR PEDIDO';
+  static String CREATE_CREADIT_ORDERS='CREAR NOTA DE CREDITO';
+  static String UPDATE_ORDERS='ACTUALIZANDO PEDIDO';
+
+  static String CLEAR = 'LIMPIAR';
+  static String PRICE_INCLUDING_VAT = 'IVA INCLUIDO';
+  static String PRICE_NOT_INCLUDING_VAT = 'IVA NO INCLUIDO';
+
+  static String PAYMENTS ='PAGOS';
+
+  static String CLIENT ='CLIENTE';
+
+  static String DATE ='FECHA';
+
+  static String ORDER='PEDIDO';
+  static String DAY='DIA';
+  static String DAYS='DIAS';
+  static String WEEK='SEMANA';
+  static String WEEKS='SEMANAS';
+
+  static String ASSIGNED_DELIVERY_DRIVER ='REPARTIDOR ASIGNADO';
+
+  static String DELIVERY_ADDRESS='DIRECCION DE ENTREGA';
+
+  static String ORDER_DATE='FECHA DE PEDIDO';
+
+  static String ASSIGN_DELIVERY_PERSON='ASIGNAR REPARTIDOR';
+  static String NOT_ENABLED='NO HABILITADO';
+
+  static String DISPATCH_ORDER='DESPACHAR ORDEN';
+  static String UPDATE_ORDER_STATUS='ACTUALIZAR ORDEN';
+
+  static String SELECT_DELIVERY_PERSON='SELECCIONAR REPARTIDOR';
+  static String ASSING_A_DELIVERY_STAFF='ASIGNAR UN REPARTIDOR';
+
+  static String ORDER_PICKER ='PREPARADOR';
+  static String PREPARED_BY ='PREPARADO POR';
+  static String PREPARED ='PREPARADO';
+  static String PREPAR ='PREPAR';
+  static String SHIPPED ='ENVIADO';
+  static String ON_THE_WAY ='EN CAMINO';
+  static String SHIPP ='ENVIAR';
+
+  static String ORDER_STATUS='STATUS DE PEDIDO';
+
+  static String DELIVERED='ENTREGADO';
+  static String RETURNED='DEVOLVIDO';
+  static String CANCEL='CANCELAR';
+
+  static String CANCELED='CANCELADO';
+
+  static String DESIST='DESISTIR';
+
+  static String MAP = 'MAP';
+
+  static String FROM ='FROM';
+  static String DELIVER ='ENTREGAR';
+  static String RETURN ='DEVOLVER';
+  static String RETURNS ='DEVOLUCION';
+  static String TOTAL_RETURN ='DEVOLUCION TOTAL';
+  static String PARTIAL_RETURN ='DEVOLUCION PARCIAL';
+  static String QUATITY_ORDERES ='CANTIDAD PEDIDO';
+
+
+  static String DELIVERY_BOY='REPARTIDOR';
+  static String YOUR_POSITION='TU POSICION';
+  static String PLACE_OF_DELIVERY='LUGAR DE ENTREGA';
+
+  static String POSITION='LOCALIZACION DE ALMACEN';
+  static String POSITION_OF_DELIVERY_BOY_NOT_AVAILEBLE='POSICION DE REPARTIDOR NO DISPONIBLE';
+
+  static String ERROR_SOCKET='ERROR SOCKET IO';
+
+  static String UPDATING_DELIVERY_BOY_POSITION ='ACTUALIZANDO POSICION DEL REPARTIDOR';
+
+  static String SHOULD_BE_CLOSER_TO_THE_CUSTOMER='DEBE ESTAR MAS CERCA DEL CLENTE';
+
+  static String WAREHOUSE='DEPOSITO';
+
+  static var EXPIRES_AT='VENCE EN';
+
+  static String ROL ='ROL';
+
+  static String ERROR_TOKEN_NOT_SAVED='ERROR TOKEN NO ARCHIVADO';
+
+  static String NUMBER ='NUMERO';
+
+  static String TOKEN_NOT_GENERATED ='TOKEN NO GENERADO';
+
+  static String SELECT_A_CLIENT ='SELECCIONAR UN CLIENTE';
+
+  static String SUBTOTAL ='SUBTOTAL';
+
+  static String UPLOAD_AN_IMAGE_TO_START ='SUBIR UNA IMAGEN PARA COMENZAR';
+
+  static String ADMINISTRATOR ='ADMINISTRADOR';
+
+  static String PAY ='PAGAR';
+
+  static String PAYMENTS_TYPE='TIPO DE PAGO';
+
+  static String TOTAL_TO_PAY ='TOTAL A PAGAR';
+
+  static String DID_YOU_RECEIVE_THE_ORDER_AMOUNT ='RECIBIO EL MONTO DEL PEDIDO?';
+
+  static String YES ='SI';
+  static String NO ='NO';
+
+  static String CASH_REGISTER ='CAJA';
+  static String BRANCH ='UNIDAD';
+
+  static String INVOICE ='FACTURA';
+  static String MUST_BE_WITHIN_PREDETERMINED_DISTANCE
+  ='DEBE ESTAR DENTRO DE DISTANCIA PREDETERMINADA METROS : ${MemorySol.VALUE_OF_METER_DELIVERY_BOY_IS_CLOSED_TO_CLIENT}';
+
+  static String UPDATE='ACTUALIZAR';
+
+  static String OLD_PASSWORD='PASSWORD ANTERIOR';
+  static String NEW_PASSWORD='PASSWORD NUEVO';
+  static String RETYPE_NEW_PASSWORD='REPETIR PASSWORD NUEVO';
+
+  static String PASSWORDS_DO_NOT_MATCH='PASSWORDS NO COINCIDEN';
+
+  static String NO_INTERNET_CONNECTION='SIN CONECCION DE INTERNET';
+
+  static String UPDATE_PASSWORD='CAMBIAR PASSWORD';
+
+  static String SHOW_PASSWORD='MOSTRAR PASSWORD';
+
+  static String FILE_NO_GENERATED='ARCHIVO NO GENERADO';
+
+  static String WHATSAPP_BUSSINESS_NOT_INSTALLED='WHATSAPP COMERCIAL NO INSTALADO';
+
+  static String SUM ='SUMA';
+
+  static String QUANTITY_SHORT='CAN.';
+  static String PRICE_SHORT='PRE.';
+
+  static String DELIVERY_DATE='FECHA DE ENTREGA';
+
+  static String IS_DEBIT_TRANSACTION='ES TRANSACCION DE DEBITO';
+  static String IS_DEBIT='DEBITO';
+  static String IS_DEBIT_SELL2='DEBITO/VENTA';
+  static String SELL='VENTA';
+
+  static String TEST_MODE='MODO DE PRUEBA';
+
+  static String LOCAL_HOST='MODO SERVIDOR LOCAL';
+  static String AUTO_LOGIN='INGRESAR AUTOMATICO';
+
+  static String COMMISSION='COMISION';
+
+  static String FINAL='FINAL';
+
+  static String ON_LINE='EN LINEA';
+  static String OFF_LINE='FUERA DE LINEA';
+
+  static String TO_BE_DELIVERED_IN ='PARA ENTREGAR EN';
+
+  static String LOADING='CARGANDO...';
+
+  static String IN='EN';
+
+  static String BASE_URL_WITHOUT_HTTP='BASE URL SIN http://';
+
+  static String SELECT_A_HOST='SELECCIONAR UN SERVIDOR';
+
+  static String MONDAY ='LUNES';
+  static String TUESDAY='MARTES';
+  static String WEDNESDAY='MIERCOLES';
+  static String THURSDAY='JUEVES';
+  static String FRIDAY='VIERNES';
+  static String SATURDAY='SABADO';
+  static String SUNDAY='DOMINGO';
+
+    static String MONDAY_CN ='星期一';
+    static String TUESDAY_CN='星期二';
+    static String WEDNESDAY_CN='星期三';
+    static String THURSDAY_CN='星期四';
+    static String FRIDAY_CN='星期五';
+    static String SATURDAY_CN='星期六';
+    static String SUNDAY_CN='星期日';
+
+
+
+  //-----------------2025-06-23
+    static String REFRESH_FAILED ='REFRES TOKEN FALLIDO';
+
+  static String REFRESH_SUCCESS='REFRES TOKEN EXITOSO';
+
+  static String RECEIVED='RECIBIDO';
+
+    static String TODAY='HOY';
+
+  static String ACTION='ACCION';
+
+  static String ORDERS_EMPTY='NO HAY ORDEN';
+
+  static String UNKNOW ='DESCONOCIDO';
+
+  static String CLIENT_NOT_FOUND='CLIENTE NO ENCONTRADO';
+
+  static String IP_EMPTY='IP VACIO';
+
+  static String FINISHED='FINALIZADO';
+
+  static String BACK_IN='VOLVIENDO EN';
+
+  static String NO_SELECTED_PRINTER='NO SELECCIONO IMPRESORA';
+
+  static String PRINTING_ORDER='IMPRIMIENDO ORDEN';
+
+  static String SCAN_DEVICE_TIME_IN_SECOUNDS='TIEMPO DE SCANEO EN SEGUNDOS';
+
+  static String TIME_TO_BACK_FROM_PRINTING_PAGE_IN_SECOUNDS='TIEMPO DE REGRESO DE IMPRESION';
+
+  static String INVALID_NUMBER='NUMEROS INVALIDOS';
+
+  static String ITEMS_TO_PRINT='ITEMS A IMPRIMIR';
+
+  static String REMOVE_DEVICE ='ELIMINAR DISPOSITIVO';
+
+  static String REMOVE_PRINTER ='ELIMINAR IMPRESORA';
+
+  static String PRINTING ='IMPRIMIENDO';
+
+  static String PRINTED ='IMPRIMIDO';
+
+  static String SELECT_PRINTER='SELECCIONAR IMPRESORA';
+
+  static String PRINTER_NO_SELECTED='IMPRESORA NO SELECCIONADA';
+
+  static String PLEASE_SELECT_A_PRINTER='FAVOR DE SELECCIONAR UNA IMPRESORA';
+
+  static String PORT_EMPTY='PUERTO VACIO';
+
+  static String PRINT_FAILED='IMPRESION FALLIDA';
+
+  static String PORT_INVALID='PUERTO INVALIDO';
+
+  static String PRINT_SUCCESS='IMPRESION EXITOSA';
+  static String NULL_FILE ='ARCHIVO NULO';
+  static String IMAGE_USER_PROFILE ='assets/img/user_profile.png';
+  static String USER_INFO ='INFORMACION DEL USUARIO';
+  static String CHANGE_PASSWORD ='CAMBIAR PASSWORD';
+
+  static String PRINT ='IMPRIMIR';
+
+  static String BARCODES_LOADED ='CODIGOS CARGADOS';
+
+  static String PLEASE_WAIT ='FAVOR DE ESPERAR';
+
+  static String ERROR_READING_FILE='ERROR AL LEER ARCHIVO';
+
+  static String NO_BARCODES_TO_PRINT='NO HAY CODIGO DE BARRA PARA IMPRIMIR';
+
+  static String SELECT_A_FILE='SELECCIONAR UN ARCHIVO';
+
+  static String SELECT_A_FILE_FOR_PRINTING='SELECCIONAR UN ARCHIVO PARA IMPRIMIR';
+
+  static String ERROR_PRINTING='ERROR AL IMPRIMIR';
+
+  static String PLEASE_SELECT_A_FILE_TO_PRINT='FAVOR DE SELECCIONAR UN ARCHIVO PARA IMPRIMIR';
+
+  static String NUMBER_OF_COPIES='NUMERO DE COPIAS';
+
+  static String PLEASE_SELECT_A_NUMBER_OF_COPIES='FAVOR DE SELECCIONAR UN NUMERO DE COPIAS';
+
+  static String COPIES_TO_PRINT='COPIAS A IMPRIMIR';
+
+  static String SELECT_A_TYPE='SELECCIONAR UN TIPO';
+
+  static String NETWORK='RED';
+  static String BLUETOOTH='BLUETOOTH';
+
+  static String GENERAL ='GENERAL';
+
+  static String TO_PRINT='IMPRIMIR';
+
+  static String SELECT_ALL='SELECCIONAR TODO';
+
+  static String SELECT_NONE='SELECCIONAR NINGUNO';
+
+  static String LABEL_SIZE='TAMAÑO DE ETIQUETA';
+
+  static String WIDTH='ANCHO';
+  static String HEIGHT='ALTO';
+
+  static String ALL='TODOS';
+
+  static String DEFAULT_PRINTER_UPDATED='IMPRESORA ACTUALIZADA';
+
+  static String DEFAULT_PRINTER_NOT_UPDATED='IMPRESORA NO ACTUALIZADA';
+
+  static String GAP='ESPACIO';
+
+  static String TOP_MARGIN='MARGEN SUPERIOR';
+
+  static String BOTTOM_MARGIN='MARGEN INFERIOR';
+  static String LEFT_MARGIN='MARGEN IZQUIERDO';
+  static String RIGHT_MARGIN='MARGEN DERECHA';
+
+  static String CODE128='CODE128';
+
+  static String CONNECT='CONECTAR';
+
+  static String CHANGE_DEVICE='CAMBIAR DISPOSITIVO';
+
+  static String PRINT_TEST_ESCPOS='IMPRIMIR TEST ESCPOS';
+
+  static String DISCOVER_PRINTER='DESCUBRIR IMPRESORA';
+
+  static String PRINT_TEST_TSPL='IMPRIMIR TEST TSPL';
+
+  static String PRINT_TEST_ZPL='IMPRIMIR TEST ZPL';
+
+  static String? TITLE='TITULO';
+
+  static String NO_QRCODES_TO_PRINT='NO HAY CODIGOS QR PARA IMPRIMIR';
+
+  static String RECEIPT='RECIBO';
+
+  static String ERROR_DATA_EMPTY='ERROR DATA VACIO';
+
+  static String FOOTER='FINAL DE PAGINA';
+
+  static String CONTENT='CONTENIDO';
+
+  static String DOCUMENT ='DOCUMENTO';
+
+    static String RECEIPT_CN ='收據';
+    static String YEAR_CN ='年';
+    static String MONTH_CN ='月';
+    static String DAY_CN ='日';
+
+  static String POS='POS';
+
+  static String LOGO='LOGO';
+
+  static String FONT_SIZE_BIG='FUENTE GRANDE';
+
+  static String FONT_SIZE_SMALL='FUENTE PEQUEÑO';
+  static String FONT_SIZE_MEDIUM='FUENTE MEDIO';
+
+  static String TEXT_MARGIN_TOP='MARGEN SUPERIOR';
+  static String TEXT_MARGIN_BOTTOM='MARGEN INFERIOR';
+  static String TEXT_MARGIN_LEFT='MARGEN IZQUIERDO';
+  static String TEXT_MARGIN_RIGHT='MARGEN DERECHA';
+
+  static String INVALID_IMAGE_FILE='ARCHIVO DE IMAGEN INVALIDO';
+
+  static String SELECT_A_LOGO_FOR_RECEIPT='SELECCIONAR UN LOGO PARA RECIBO';
+
+  static String SELECT_A_LOGO ='SELECCIONAR UN MEMBRETE';
+
+  static String IMAGE_PREVIEW='IMAGEN PREVIA';
+
+  static String PLEASE_SELECT_A_LOGO='FAVOR DE SELECCIONAR UN MEMBRETE';
+
+  static String NO_IMAGE_DATA='NO HAY DATOS DE IMAGEN';
+
+  static String NO_LOGO_SELECTED='NO SELECCIONO MEMBRETE';
+
+  static String ERROR_LOADING_IMAGE='ERROR AL CARGAR IMAGEN';
+
+  static String IMAGE_SAVED_TO ='IMAGEN GUARDADA EN';
+
+  static String ERROR_SAVING_IMAGE = 'ERROR AL GUARDAR IMAGEN';
+
+  static String SELECT_A_IMAGE='SELECIONA UNA IMAGEN';
+
+  static String OPEN_PREVIEW_PAGE_DOWNLOAD_THE_FILE='ABRIR PAGINA DE PREVIA PARA DESCARGAR EL ARCHIVO';
+
+  static String PAPER='PAPEL';
+
+  static String SELECT_A_FOOTER_FOR_DOCUMENT='SELECCIONAR UNA IMAGEN PARA EL FINAL DEL DOCUMENTO, PUEDE DEJAR EN BLANCO O EN PALABRAS';
+
+  static String PRINT_ERROR='ERROR AL IMPRIMIR';
+
+  static String QR='QR';
+
+  static String FILE ='ARCHIVO';
+
+  static String PLEASE_SELECT_A_FILE='FAVOR DE SELECCIONAR UN ARCHIVO';
+
+  static String CUSTOM='PERSONALIZADO';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
