@@ -4,7 +4,6 @@ import 'dart:io';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:path/path.dart' as path;
@@ -45,6 +44,7 @@ class MemorySol {
     static bool CHECK__DELIVERY_BOY_IS_CLOSED_TO_CLIENT = true;
     static bool VAT_INCLUDED_MODE = true;
     static String COMPANY_NAME ='SOL EXPRESS S.A.';
+    static bool completeVersion = true ;
 
 
     static final List<String> keyToRemoveAtSignOut =[];
@@ -213,8 +213,11 @@ class MemorySol {
   static const String KEY_LABEL_SIZE='key_label_size';
   static const String KEY_IMAGE_LOGO_BYTES='key_image_logo_bytes';
 
-  static String KEY_TSPL_COMMAND='key_tspl_command';
-  static String KEY_ZPL_COMMAND='key_zpl_command';
+  static const String KEY_TSPL_COMMAND='key_tspl_command';
+  static const String KEY_ZPL_COMMAND='key_zpl_command';
+  static const String KEY_LABEL_HISTORY = 'label_history_v1';
+
+  static String KEY_QR_HISTORY='key_qr_history';
 
 
 
@@ -240,7 +243,8 @@ class MemorySol {
       final file = File(path.join(documentDirectory.path, 'temp_image.png'));
       return file ;
   }
-
+    static const String KEY_STICKER_IMAGE_DIALOG_OPTIONS =
+        'key_sticker_image_dialog_options';
 
 
 

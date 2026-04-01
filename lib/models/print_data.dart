@@ -13,6 +13,7 @@ class PrintData {
   double? fontSizeBig ;
   double? fontSize ;
   double? printingHeight;
+  double? textMarginLeft=60;
   BluetoothPrinter? printer;
   Uint8List? logoImageBytes;
   Uint8List? footerImageBytes;
@@ -31,6 +32,7 @@ class PrintData {
     this.logoImageBytes,
     this.footerImageBytes,
     this.printingHeight,
+    this.textMarginLeft,
   });
 
   PrintData.fromJson(Map<String, dynamic> json) {
@@ -51,6 +53,8 @@ class PrintData {
     fontSizeBig = json['font_size_big'] != null ? double.tryParse(json['font_size_big'].toString()) : null;
     fontSize = json['font_size'] != null ? double.tryParse(json['font_size'].toString()) : null;
     printingHeight = json['printing_height'] != null ? double.tryParse(json['printing_height'].toString()) : null;
+    textMarginLeft = json['text_margin_left'] != null ? double.tryParse(json['text_margin_left'].toString()) : null;
+
   }
 
   Map<String, dynamic> toJson() {
@@ -67,6 +71,7 @@ class PrintData {
     data['font_size_big'] = fontSizeBig;
     data['font_size'] = fontSize;
     data['printing_height'] = printingHeight;
+    data['text_margin_left'] = textMarginLeft;
     return data;
   }
   static List<PrintData> fromJsonList(dynamic json) {

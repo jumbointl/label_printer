@@ -7,30 +7,27 @@ import 'package:flutter_esc_pos_network/flutter_esc_pos_network.dart';
 import 'package:flutter_pos_printer_platform_image_3_sdt/esc_pos_utils_platform/src/capability_profile.dart';
 import 'package:flutter_pos_printer_platform_image_3_sdt/esc_pos_utils_platform/src/enums.dart';
 import 'package:flutter_pos_printer_platform_image_3_sdt/esc_pos_utils_platform/src/generator.dart';
+import 'package:flutter_pos_printer_platform_image_3_sdt/flutter_pos_printer_platform_image_3_sdt.dart';
 import 'package:get/get.dart';
 import 'package:image/image.dart' as img;
-import 'package:flutter/services.dart' show rootBundle;
 
-import '../../common/controller_model.dart';
 import '../../common/messages.dart';
 import '../../models/bluetooth_printer.dart';
 import '../../models/print_data.dart';
+import '../to_printer.dart';
 
 
-class EscPosController extends ControllerModel {
+class EscPosController extends GetxController {
   Rxn<BluetoothPrinter> selectedPrinter = Rxn<BluetoothPrinter>();
 // Key global para el RepaintBoundary
   final GlobalKey printKey = GlobalKey();
  PrintData printData;
  RxBool isLoading = false.obs;
+  final printerManager = PrinterManager.instance;
   var selectedPaperSize = PaperSize.mm80.obs;
   EscPosController({required this.printData}){
     selectedPrinter.value = printData.printer;
-  }
-  @override
-  void onInit() {
 
-    super.onInit();
   }
   void updatePaperSize(PaperSize size) {
     selectedPaperSize.value = size;
@@ -38,7 +35,11 @@ class EscPosController extends ControllerModel {
 
   Future<void> printReceipt() async {
     // Es necesario esperar que el widget se renderice antes de capturarlo
-
+    final printer = selectedPrinter.value;
+    if (printer == null) {
+      showMessages(Messages.ERROR, Messages.PRINTER_NO_SELECTED);
+      return;
+    }
     await Future.delayed(Duration.zero);
 
     RenderRepaintBoundary? boundary = printKey.currentContext?.findRenderObject() as RenderRepaintBoundary?;
@@ -68,8 +69,12 @@ class EscPosController extends ControllerModel {
 
       List<int> bytesToPrint = [];
       bytesToPrint += generator.image(img.grayscale(decodedImage));
-      bytesToPrint += generator.feed(2);
+      //bytesToPrint += generator.feed(2);
+      //bytesToPrint += generator.cut();
+      bytesToPrint += generator.feed(4);
       bytesToPrint += generator.cut();
+
+
 
       printPosTicket(bytesToPrint);
 
@@ -80,7 +85,16 @@ class EscPosController extends ControllerModel {
   }
 
 
-  Future<void> printPosTicket(List<int> ticket) async {
+  Future<void> printPosTicketBySocket(List<int> ticket) async {
+
+    if(selectedPrinter.value== null) {
+       showMessages(Messages.ERROR, Messages.PRINTER_NO_SELECTED);
+      return ;
+    }
+    if(selectedPrinter.value!= null && selectedPrinter.value!.typePrinter == PrinterType.bluetooth) {
+      showMessages(Messages.ERROR, Messages.BLUETOOTH_PRINTER);
+      return ;
+    }
 
     int printerPort = int.tryParse(selectedPrinter.value!.port ?? '9100') ??
         9100;
@@ -179,6 +193,94 @@ class EscPosController extends ControllerModel {
 
     } catch (e) {
       print("Error al procesar la imagen: $e");
+    }
+  }
+  Future<void> printPosTicket(List<int> ticket) async {
+
+    final printer = selectedPrinter.value;
+    if (printer == null) {
+      showMessages(Messages.ERROR, Messages.PRINTER_NO_SELECTED);
+      return;
+    }
+    debugPrint('printer printPosTicket : ${printer.address ?? ''}');
+    final addr = printer.address ?? '';
+    if (addr.contains(':')) {
+      await printPosTicketByBT(ticket);
+    } else {
+      await printPosTicketBySocket(ticket);
+    }
+  }
+
+  Future<void> printPosTicketByBT(List<int> ticket) async {
+    final printer = selectedPrinter.value;
+    if (printer == null) {
+      showMessages(Messages.ERROR, Messages.PRINTER_NO_SELECTED);
+      return;
+    }
+
+    // Regla: BT clásico = MAC con ':'
+    final addr = printer.address ?? '';
+    if (addr.isEmpty || !addr.contains(':')) {
+      showMessages(Messages.ERROR, Messages.NETWORK_PRINTER);
+      return;
+    }
+
+    try {
+      // Delegamos todo a PosUniversalPrinter
+      final ok = await printToBTBytes(
+        Uint8List.fromList(ticket),
+        isLoading, // RxBool del controller
+        printer,
+      );
+
+      if (!ok) {
+        // printToBTBytes ya muestra mensaje de error, esto es opcional
+        debugPrint('printPosTicketByBT: printToBTBytes returned false');
+      }
+    } catch (e) {
+      debugPrint('printPosTicketByBT error: $e');
+      showMessages(Messages.ERROR, Messages.ERROR_PRINTING);
+    } finally {
+      // printToBTBytes ya pone isLoading=false en finally,
+      // pero dejamos update() por si tu UI depende de GetX update().
+      update();
+    }
+  }
+
+  Future<bool> _ensureBtConnected(BluetoothPrinter printer) async {
+    try {
+      // Si tu plugin no expone un "isConnected" real,
+      // este flag local sirve para evitar reconectar siempre.
+      if (isLoading.value) return true;
+
+      await printerManager.connect(
+        type: PrinterType.bluetooth,
+        model: BluetoothPrinterInput(
+          name: printer.deviceName,
+          address: printer.address!,
+          isBle: printer.isBle ?? false,
+          // autoConnect opcional si tu clase lo tiene:
+          // autoConnect: true,
+        ),
+      );
+
+      isLoading.value = true;
+      return true;
+    } catch (e) {
+      debugPrint('_ensureBtConnected error: $e');
+      isLoading.value = false;
+      return false;
+    }
+  }
+
+  Future<void> disconnectBtIfNeeded() async {
+    try {
+      if (!isLoading.value) return;
+      await printerManager.disconnect(type: PrinterType.bluetooth);
+    } catch (_) {
+      // swallow
+    } finally {
+      isLoading.value = false;
     }
   }
 

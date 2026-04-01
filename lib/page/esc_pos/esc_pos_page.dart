@@ -1,29 +1,31 @@
-import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_pos_printer_platform_image_3_sdt/esc_pos_utils_platform/src/enums.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
-import '../../common/memory_sol.dart';
 import '../../common/messages.dart';
-import 'bottom_image_clipper.dart';
 import 'esc_pos_controller.dart';
 
 class EscPosPage extends GetView<EscPosController> {
 
-  EscPosPage({super.key});
+  const EscPosPage({super.key});
 
 
   @override
   Widget build(BuildContext context) {
+    String address =(controller.selectedPrinter.value?.address!=null) ?
+            controller.selectedPrinter.value!.address! : '';
+    String port = controller.selectedPrinter.value!=null ?
+        controller.selectedPrinter.value!.port ?? '' : '' ;
 
+    String title = controller.selectedPrinter.value == null ? Messages.POS :
+        '$address ${ port.isEmpty ? '': ' - $port'}';
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.cyan[200],
-        title: Text(Messages.POS),
+        title: Text(title.trim()),
       ),
       bottomNavigationBar: BottomAppBar(
         color: Colors.cyan[200],
@@ -70,63 +72,102 @@ class EscPosPage extends GetView<EscPosController> {
         ),
         child: SingleChildScrollView(
           child: Stack(
-            children: [Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Image.memory(controller.printData.logoImageBytes!),
-                                // Content text (centered)
-                Transform.translate(
-                  offset: Offset(0, controller.printData.textMarginTop ?? -300),
-                  child: Column(
+            children: [
+              Container(
+              color: Colors.white,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Image.memory(controller.printData.logoImageBytes!),
+                                  // Content text (centered)
+                  Transform.translate(
+                    offset: Offset(0, controller.printData.textMarginTop ?? 40),
+                    child: Column(
 
-                    children: [
-                      Text(
-                        controller.printData.title ?? '',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: controller.printData.fontSizeBig ?? 48.0, color: Colors.black),
-                      ),
-                      const SizedBox(height: 20),
-                      Text(
-                        controller.printData.content ?? '',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: controller.printData.fontSize ?? 32.0, color: Colors.black),
-                      ),
-                      const SizedBox(height: 10),
-                      // Date (right-aligned)
+                      children: [
+                        Text(
+                          controller.printData.title ?? '',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: controller.printData.fontSizeBig ?? 32.0, color: Colors.black),
+                        ),
+                        const SizedBox(height: 20),
 
-
-                      if (controller.printData.footer != null) ...[
+                        firstLineIndent(controller.printData.content ?? '', controller.printData.textMarginLeft ?? 60,
+                            TextStyle(fontSize: controller.printData.fontSize ?? 32.0, color: Colors.black)),
+                        /*Text(
+                          controller.printData.content ?? '',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: controller.printData.fontSize ?? 32.0, color: Colors.black),
+                        ),*/
                         const SizedBox(height: 10),
-                        // Footer (centered)
+                        // Date (right-aligned)
+
+
+                        if (controller.printData.footer != null) ...[
+                          const SizedBox(height: 10),
+                          // Footer (centered)
+                          Padding(
+                            padding: const EdgeInsets.only(right: 5.0),
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: showFooterImage ? Image.memory(controller.printData.footerImageBytes!)
+                                  :Text(controller.printData.footer! ,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(fontSize: controller.printData.fontSize ?? 32.0, color: Colors.black),
+                              ),
+                            ),
+                          ),
+                        ],
                         Align(
                           alignment: Alignment.centerRight,
-                          child: showFooterImage ? Image.memory(controller.printData.footerImageBytes!)
-                              :Text(controller.printData.footer! ,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: controller.printData.fontSize ?? 32.0, color: Colors.black),
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 5.0),
+                            child: Text(
+                              controller.printData.date ?? '',
+                              style: TextStyle(fontSize: fontSizeDate, color: Colors.black),
+                            ),
                           ),
                         ),
                       ],
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: Text(
-                          controller.printData.date ?? '',
-                          style: TextStyle(fontSize: fontSizeDate, color: Colors.black),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                ),
 
-              ],
+                ],
+              ),
             )],
           ),
         ),
       ),
     );
   }
+  Widget firstLineIndent(String text, double indent, TextStyle style) {
+    final lines = text.split('\n');
+    if (lines.isEmpty) return const SizedBox.shrink();
 
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: lines.map((line) {
+        return RichText(
+          text: TextSpan(
+            style: TextStyle(
+                color: Colors.black,
+                fontSize: controller.printData.fontSize ?? 24.0
+            ),
+            children: [
+              WidgetSpan(
+                  child: SizedBox(
+                      width: controller.printData.textMarginLeft ?? 60)),
+              // ESTE ES EL MARGEN AL INICIO (Sangría)
+              TextSpan(
+                text: line ?? "",
+              ),
+            ],
+          ),
+        );
+      }).toList(),
+    );
+  }
   Future<Size>? getImageSize(Uint8List uint8list) async {
     // Use the ui.instantiateImageCodec from dart:ui to decode the image
 
@@ -152,6 +193,7 @@ class EscPosPage extends GetView<EscPosController> {
                 onChanged: (PaperSize? value) {
                   if (value != null) {
                     controller.updatePaperSize(value);
+                    (context as Element).markNeedsBuild();
                   }
                 },
                 child: Row( // Usar un Row en lugar del Column anterior

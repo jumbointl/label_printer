@@ -1,5 +1,4 @@
 
-import 'package:flutter/src/widgets/framework.dart';
 
 import 'memory_sol.dart';
 
@@ -608,6 +607,66 @@ class Messages{
   static String PLEASE_SELECT_A_FILE='FAVOR DE SELECCIONAR UN ARCHIVO';
 
   static String CUSTOM='PERSONALIZADO';
+
+  static String CONNECTED='CONECTADO';
+
+  static String DISCONNECTED='DESCONECTADO';
+
+  static String NOT_CONNECTED='NO CONECTADO';
+
+  static String BLUETOOTH_PRINTER='BLUETOOTH IMPRESORA';
+
+  static String SELETCT='SELECCIONAR';
+
+  static String REPRINT='REIMPRIMIR';
+
+  static String CODE ='CODIGO';
+
+  static String SELECT_A_CODE ='SELECCIONAR UN CODIGO';
+
+  static String COPIES ='COPIAS';
+
+  static String SELECT_A_COPIES ='SELECCIONAR UN NUMERO DE COPIAS';
+
+  static String SAVED_AT ='GUARDADO EN';
+
+  static String HISTORY='HISTORIAL';
+
+  static String CLEAR_HISTORY='BORRAR HISTORIAL';
+
+  static String NO_HISTORY='NO HAY HISTORIAL';
+
+  static String ERROR_CONNECTING='ERROR AL CONECTAR';
+
+  static String ERROR_DISCONNECTING='ERROR AL DESCONECTAR';
+
+  static String NETWORK_PRINTER='IMPRESORA RED';
+
+  static String BLUETOOTH_PRINTER_NOT_FOUND='BLUETOOTH IMPRESORA NO ENCONTRADA';
+
+  static String FIRST_LINE_INDENTATION='SANGRIA PRIMERA LINEA';
+
+  static String SECOND_LINE_INDENTATION='SANGIRA SEGUNDA LINEA';
+
+  static String TIPS_POS_LOGO='POSICIONAR MEMBRETE,SUFICIENTE ALTO(ALTURA) PARA PODER IMPRIMIR TODOS';
+  static String TIPS_LETTERHEAD_LOGO='POSICIONAR MEMBRETE,SUFICIENTE ALTO(ALTURA) PARA PODER IMPRIMIR TODOS';
+
+  static String SELECT_A_LETTERHEAD_FOR_RECEIPT='SELECCIONAR UN MEMBRETE PARA RECIBO';
+
+    static String DO_YOU_WANT_TO_PRINT_THE_SELECTED_IMAGE =
+        '¿Quiere imprimir la imagen seleccionada?';
+
+    static String WIDTH_MM = 'ANCHO (mm)';
+    static String HEIGHT_MM = 'ALTO (mm)';
+    static String GAP_MM = 'GAP (mm)';
+    static String MARGIN_X_MM = 'MARGEN X (mm)';
+    static String MARGIN_Y_MM = 'MARGEN Y (mm)';
+
+  static String INVALID_IMAGE_PRINT_DATA=' DATOS DE IMPRESION INVALIDOS';
+
+
+
+
 
 
 
